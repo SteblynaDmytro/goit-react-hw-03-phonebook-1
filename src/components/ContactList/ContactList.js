@@ -9,7 +9,7 @@ const ContactList = ({ renderContacts, deleteContacts }) => {
         <li className={css.item} key={id}>
           {name}: {number}
           <button
-            className={css.btn}
+            className={css.btnDelete}
             type="button"
             onClick={() => deleteContacts(id)}
           >
@@ -22,7 +22,7 @@ const ContactList = ({ renderContacts, deleteContacts }) => {
 };
 
 ContactList.prototype = {
-  filter: PropTypes.arrayOf(
+  renderContacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,

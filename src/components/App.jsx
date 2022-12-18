@@ -5,6 +5,7 @@ import css from '../styles/Common.module.css';
 import { ContactForm } from './ContactForm/ContactForm';
 import ContactFilter from './ContactFilter/ContactFilter';
 import ContactList from './ContactList/ContactList';
+import Notification from './Notification/Notification';
 
 export default class App extends Component {
   state = {
@@ -64,11 +65,18 @@ export default class App extends Component {
     return (
       <div className={css.container}>
         <ContactForm addContact={this.addContacts} />
-        <ContactFilter filter={this.filterContacts} />
-        <ContactList
-          renderContacts={renderContacts}
-          deleteContacts={this.deleteContacts}
-        />
+
+        {this.state.contacts.length > 0 ? (
+          <div>
+            <ContactFilter filter={this.filterContacts} />
+            <ContactList
+              renderContacts={renderContacts}
+              deleteContacts={this.deleteContacts}
+            />
+          </div>
+        ) : (
+          <Notification />
+        )}
       </div>
     );
   }
