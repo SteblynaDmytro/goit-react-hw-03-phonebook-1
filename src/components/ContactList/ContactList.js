@@ -1,35 +1,46 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/operations';
+import {
+  selectContacts,
+  selectError,
+  selectFilter,
+  selectIsLoading,
+} from 'redux/selectors';
 import css from '../../styles/Common.module.css';
 
-const ContactList = ({ renderContacts, deleteContacts }) => {
-  return (
-    <ul className={css.list}>
-      {renderContacts.map(({ id, name, number }) => (
-        <li className={css.item} key={id}>
-          {name}: {number}
-          <button
-            className={css.btnDelete}
-            type="button"
-            onClick={() => deleteContacts(id)}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
-  );
-};
+const ContactList = () => {
+  const filter = useSelector(selectFilter);
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const dispatch = useDispatch();
 
-ContactList.prototype = {
-  renderContacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
-    })
-  ),
-  deleteContact: PropTypes.func.isRequired,
+  const renderContacts = contacts.filter(contact =>
+    contact.name ? contact.name.toLowerCase().includes(filter) : contacts
+  );
+
+  return (
+    <>
+      {isLoading && <p>Loading...</p>}{' '}
+      {error && <p>Something went wrong. Please try again later.</p>}
+      <ul className={css.list}>
+        {renderContacts.map(({ id, name, number }) => (
+          <li className={css.item} key={id}>
+            {name}: {number}
+            <button
+              className={css.btnDelete}
+              type="button"
+              onClick={() => dispatch(deleteContact(id))}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+      ;
+    </>
+  );
 };
 
 export default ContactList;

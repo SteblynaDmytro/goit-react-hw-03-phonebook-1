@@ -39,7 +39,7 @@ body {
   margin-left: 12px;
   padding: 10px 29px;
 
-  border: 1px solid rgba(202, 44, 255, 0.762);
+  border: 1px solid rgba(0, 0, 0, 0.762);
   border-radius: 4px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
@@ -50,14 +50,14 @@ body {
 
 .btn:hover,
 .btn:focus {
-  background-color: rgba(202, 44, 255, 0.762);
+  background-color: rgba(0, 0, 0, 0.762);
 }
 
 .btnDelete {
   margin-left: 12px;
   padding: 3px 6px;
 
-  border: 1px solid rgba(202, 44, 255, 0.762);
+  border: 1px solid rgba(0, 0, 0, 0.762);
   border-radius: 4px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
@@ -68,7 +68,7 @@ body {
 
 .btnDelete:hover,
 .btnDelete:focus {
-  background-color: rgba(202, 44, 255, 0.762);
+  background-color: rgba(0, 0, 0, 0.762);
 }
 
 .form {
@@ -83,7 +83,7 @@ body {
   padding: 5px 15px 5px 15px;
   width: 200px;
   outline: transparent;
-  border: 1px solid rgba(202, 44, 255, 0.762);
+  border: 1px solid rgba(0, 0, 0, 0.762);
   border-radius: 6px;
   color: rgba(0, 0, 0, 0.247);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
